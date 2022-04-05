@@ -5,12 +5,18 @@ import styles from '../styles/Home.module.css'
 
 const SelfIntro: NextPage = () => {
   return (
-    <div className="flex justify-center items-center h-screen w-full p-28">
-      <div className="container flex flex-wrap justify-between items-center mx-auto pt-16">
-        <div className="w-2/5 text-slate-50	text-2xl">
-          Hi, This is Jim, a software in Hong Kong who love to build web things.
+    <div className="flex justify-center items-center h-screen w-full md:p-28 sm:p-0">
+      <div className="container flex flex-wrap justify-between items-center mx-auto md:pt-40">
+
+        {/* self intro */}
+        <div className="w-full md:w-2/5 text-slate-50	text-2xl p-10">
+          <div className="text-3xl font-bold text-slate-300 pb-10">
+            Hi, This is Jim
+          </div>
+          A a software in Hong Kong who love to build web things.
         </div>
-        <div className="w-3/5">
+        {/* image part */}
+        <div className="w-4/5 mx-auto md:w-3/5 md:p-0 sm:w-full sm:p-28">
           <div className="aspect-video rounded-md bg-cover bg-center bg-[url('/coding.gif')]" />
         </div>
       </div>
