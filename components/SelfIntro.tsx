@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css'
 
 const SelfIntro: NextPage = () => {
   return (
-    <div className="flex justify-center items-center h-screen w-full md:p-28 sm:p-0">
+    <div id="about" className="flex justify-center items-center h-screen w-full md:p-28 sm:p-0">
       <div className="container flex flex-wrap justify-between items-center h-auto mx-auto md:pt-40">
 
         {/* self intro */}

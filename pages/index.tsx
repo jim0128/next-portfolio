@@ -5,9 +5,11 @@ import styles from '../styles/Home.module.css'
 import SelfIntro from '../components/SelfIntro'
 import Timeline from '../components/Timeline'
 
+//  class="scroll-smooth"
+
 const Home: NextPage = () => {
   return (
-    <div className="h-full w-full bg-background">
+    <div id="top" className="h-full w-full bg-background">
       <Head>
         <title>Jim's Personal Portfolio</title>
         <meta name="description" content="Welecome to Jim's Personal Portfolio" />
@@ -33,14 +35,14 @@ const Home: NextPage = () => {
             <div className="hidden w-full md:block md:w-auto" id="mobile-menu">
               <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
                 <li>
-                  <a href="#" className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">Home</a>
+                  <a href="#about" className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">About</a>
                 </li>
                 <li>
-                  <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+                  <a href="#work" className="block py-2 pr-4 pl-3 text-blue-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Work Experience</a>
                 </li>
-                <li>
+                {/* <li>
                   <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
@@ -51,31 +53,30 @@ const Home: NextPage = () => {
       <SelfIntro />
       <Timeline />
 
-      <div className="container flex flex-wrap justify-between items-center mx-auto pt-16">
-        Hi, Welcome to my personal page
-      </div>
-      <div className="container flex flex-wrap justify-between items-center mx-auto">
-        Hi, Welcome to my personal page
-      </div>
 
-      {/* <div>
-        <span className={styles.logo}>
-          <Image src="/coding.gif" alt="Vercel Logo" layout='fill' />
-        </span>
-      </div>
+      <footer className="mt-16 w-full h-20 border-t-white border-t-2">
+        <div className="container flex flex-wrap justify-between items-center mx-auto pt-8">
 
- */}
+          <a
+            className="text-white"
+            href="https://www.linkedin.com/in/jim-chan-707793114/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Linkedin
+          </a>
+          <a
+            href="#top"
+            rel="noopener noreferrer"
+          >
+            <div className="h-6 w-6">
+              <div className="aspect-square rounded-md bg-cover bg-center bg-[url('/favicon.ico')]" />
+            </div>
+          </a>
+        </div>
+      </footer >
 
-      <footer className="pt-16">
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-        </a>
-      </footer>
-    </div>
+    </div >
   )
 }
 

@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css'
 
 const Timeline: NextPage = () => {
   return (
-    <div className="block md:flex justify-center items-center min-h-full w-full md:pl-28 md:pr-28 pl-12 pr-12">
+    <div id="work" className="block md:flex justify-center items-center min-h-full w-full md:pl-28 md:pr-28 pl-12 pr-12">
       <div className="container flex flex-wrap justify-around items-center mx-auto pt-16">
 
         <h3 className="flex items-center mb-16 text-3xl font-semibold text-white">
