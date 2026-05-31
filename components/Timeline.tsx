@@ -28,12 +28,16 @@ const Timeline: NextPage = () => {
               May 2021 - Current
             </time>
             <div className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
-              {/* <div className="p-1">
-                Using Flutter to build 2.0 of the user app in Android and iOS. Also need to involved to the maintenance of the 1.0 app with native code.
-              </div> */}
+              <div className="p-1">
+                Using Flutter to build 2.0 of the user app in Android and iOS. Also need to be involved to the maintenance of the 1.0 app with native code.
+              </div>
 
               <div className="p-1">
-                Also need to build and maintain the backend with golang and grpc.
+                Also need to build and maintain the backend with Golang and gRPC. 
+              </div>
+
+              <div className="p-1">
+                Recently working on e-Giro integration and YT Family Project
               </div>
             </div>
             {/* <a href="#" className="inline-flex items-center py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">
@@ -50,7 +54,7 @@ const Timeline: NextPage = () => {
               <Image className="rounded-full" src="/shopline.jpeg" alt="Vercel Logo" layout='fill' />
             </span>
             <h3 className="mb-4 text-xl font-semibold text-gray-500">
-              <a href="https://shopage.org" target="_blank">SHOPLINE</a>
+              <a href="https://shopline.hk/en/" target="_blank">SHOPLINE</a>
             </h3>
             <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
               April 2020 - May 2021
