@@ -13,7 +13,7 @@ const SelfIntro: NextPage = () => {
           <div className="pb-4 text-3xl font-bold text-slate-300 md:pb-8">
             Hi, I am Jim Chan
           </div>
-          A software engineer in Hong Kong who love to build web things.
+          A software engineer in Hong Kong who loves to build tech things.
         </div>
         {/* image part */}
         <div className="w-4/5 mx-auto md:w-3/5 md:p-0 sm:w-full sm:p-28">
