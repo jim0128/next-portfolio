@@ -1,80 +1,117 @@
+'use client';
+
 import type { NextPage } from 'next'
+import Script from 'next/script';
 import Head from 'next/head'
 import Image from 'next/image'
+import { useState } from 'react';
+import { Menu, X, FileText } from 'lucide-react';
 import styles from '../styles/Home.module.css'
 import SelfIntro from '../components/SelfIntro'
 import Timeline from '../components/Timeline'
-
-//  class="scroll-smooth"
+import SelfProject from '../components/SelfProject'
 
 const Home: NextPage = () => {
+
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navigation = [
+    { name: 'Home', href: '#home' },
+    { name: 'Experience', href: '#experience' },
+    // { name: 'Projects', href: '#projects' },
+    { name: 'Contact', href: '#contact' },
+  ];
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
   return (
-    <div id="top" className="h-full w-full bg-background">
+    <div className="bg-[#0f172a] text-[#f8fafc] min-h-screen selection:bg-cyan-500 selection:text-black" >
+
+
       <Head>
-        <title>Jim's Personal Portfolio</title>
-        <meta name="description" content="Welecome to Jim's Personal Portfolio" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JIM.CHAN | Portfolio</title>
+        {/* <!-- Google Fonts for a tech/monospaced aesthetic --> */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
       </Head>
 
-      <header className="w-screen	fixed z-30">
-        <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
-          <div className="container flex flex-wrap justify-between items-center mx-auto">
-            <a href="./" className="flex items-center">
-              <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Jim Chan</span>
-            </a>
-            <button data-collapse-toggle="mobile-menu" type="button" className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu" aria-expanded="false">
-              <span className="sr-only">Open main menu</span>
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"> </path>
-              </svg>
-              <svg className="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path>
-              </svg>
-            </button>
-
-            <div className="hidden w-full md:block md:w-auto" id="mobile-menu">
-              <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
-                <li>
-                  <a href="#about" className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">About</a>
-                </li>
-                <li>
-                  <a href="#work" className="block py-2 pr-4 pl-3 text-blue-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Work Experience</a>
-                </li>
-                {/* <li>
-                  <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
-                </li> */}
-              </ul>
-            </div>
+      {/* 1. HEADER SECTION */}
+      <header className="fixed top-0 left-0 w-full h-16 bg-[#0f172a]/85 backdrop-blur-md border-b border-cyan-500/30 z-50">
+        <div className="max-w-6xl mx-auto px-5 h-full flex items-center justify-between">
+          {/* Logo */}
+          <div className="text-xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#34d399]">
+            JIM.CHAN
           </div>
-        </nav>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex gap-8">
+            {navigation.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-sm tracking-wider text-[#cbd5e1] hover:text-[#38bdf8] transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.6)]"
+              >
+                // {item.name}
+              </a>
+            ))}
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden text-[#38bdf8] p-1 cursor-pointer focus:outline-none"
+            onClick={toggleMenu}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+
+        {/* Mobile Dropdown Menu */}
+        <div className={`fixed top-16 left-0 w-full bg-[#0f172a] border-b border-cyan-500/40 flex-col p-5 pb-6 gap-4 z-40 transition-all duration-300 ${isMenuOpen ? 'flex opacity-100' : 'hidden opacity-0'}`}>
+          {navigation.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              onClick={() => setIsMenuOpen(false)}
+              className="text-lg text-[#f8fafc] py-2 border-b border-[#334155]"
+            >
+              &gt; {item.name}
+            </a>
+          ))}
+        </div>
       </header>
 
 
+      {/* 2. MAIN HERO SECTION */}
       <SelfIntro />
+
+
+      {/* 3. JOB SECTION (Vertical Timeline) */}
       <Timeline />
 
+      {/* 4. WEB APPS GATEWAY */}
+      {/* <SelfProject /> */}
 
-      <footer className="mt-16 w-full h-20 border-t-white border-t-2">
-        <div className="container flex flex-wrap justify-between items-center mx-auto pt-8">
 
-          <a
-            className="text-white"
-            href="https://www.linkedin.com/in/jim-chan-707793114/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Linkedin
-          </a>
-          <a
-            href="#top"
-            rel="noopener noreferrer"
-          >
-            <div className="h-6 w-6">
-              <div className="aspect-square rounded-md bg-cover bg-center bg-[url('/favicon.ico')]" />
-            </div>
-          </a>
+      {/* 5. FOOTER SECTION */}
+      <footer id="contact" className="border-t border-[#1e293b] py-10 bg-[#0f172a]">
+        <div className="max-w-6xl mx-auto px-5 flex flex-col md:flex-row justify-between items-center gap-5">
+          <div className="text-xs text-[#64748b] tracking-wider">&copy;ALL RIGHTS SECURED.</div>
+          <div className="flex gap-6">
+            <a href="https://www.linkedin.com/in/jim-chan-707793114/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-[#cbd5e1] hover:text-[#38bdf8] transition-colors">
+              LinkedIn
+            </a>
+            {/* <a href="/your-cv.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-[#cbd5e1] hover:text-[#38bdf8] transition-colors">
+              <FileText size={16} /> Download_CV
+            </a> */}
+          </div>
         </div>
-      </footer >
+      </footer>
+
 
     </div >
   )

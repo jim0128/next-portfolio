@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JIM.CHAN | Portfolio</title>
+    <!-- Google Fonts for a tech/monospaced aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- RESET & BASE VARIABLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #0f172a;
+            /* Sleek tech slate-blue background (No longer pitch black) */
+            --surface-color: #1e293b;
+            /* Slightly lighter blue-gray for cards and components */
+            --border-color: rgba(34, 211, 238, 0.3);
+            /* Bright electric cyan lines */
+            --text-main: #f8fafc;
+            /* Crisp, high-contrast near-white text */
+            --text-muted: #cbd5e1;
+            /* Light silver-blue for highly legible paragraphs */
+            --cyan-glow: #38bdf8;
+            /* High-visibility electric blue */
+            --emerald-glow: #34d399;
+            /* Luminous matrix green */
+            --red-glow: #f87171;
+            /* Vibrant alert crimson for your app portal */
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Share Tech Mono', monospace;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 64px;
+            background-color: #0f172a;
+            backdrop-filter: blur(12px);
+            border-b: 1px solid var(--border-color);
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            background: linear-gradient(to right, var(--cyan-glow), var(--emerald-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav.desktop-nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        nav.desktop-nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        nav.desktop-nav a:hover {
+            color: var(--cyan-glow);
+            text-shadow: 0 0 8px rgba(34, 211, 238, 0.6);
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--cyan-glow);
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        /* Mobile Dropdown Overlay */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 64px;
+            left: 0;
+            width: 100%;
+            background-color: var(--bg-color);
+            border-bottom: 1px solid rgba(34, 211, 238, 0.4);
+            flex-direction: column;
+            padding: 16px 20px 24px;
+            gap: 16px;
+            z-index: 99;
+        }
+
+        .mobile-nav.open {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 8px 0;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            min-h: 100vh;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 64px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+
+
+
+        /* Hybrid Cyber-Ink Canvas Backdrop Placeholder */
+        /* .ink-bg-container {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.85; 
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+     
+        .ink-blob-1 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(2, 6, 23, 0.9) 0%, rgba(5, 150, 105, 0.4) 50%, rgba(15, 23, 42, 0) 100%);
+            border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+            filter: blur(40px); 
+            animation: pulse 6s infinite alternate ease-in-out;
+        }
+        
+  
+        .ink-blob-2 {
+            position: absolute;
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, rgba(6, 182, 212, 0.1) 60%, rgba(15, 23, 42, 0) 100%);
+            border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%; 
+            filter: blur(60px);
+            animation: ping-loop 10s infinite linear;
+        } */
+
+
+        /* --- UPGRADED 水墨暈染 (INK BLEED) STYLE --- */
+        .ink-bg-container {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.65;
+            pointer-events: none;
+            z-index: 0;
+            /* Applies the organic bleeding filter to everything inside this container */
+            filter: url(#ink-bleed-filter);
+        }
+
+        /* The Core Ink Wash: Deep, organic diffusing gradient */
+        .ink-blob-1 {
+            position: absolute;
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(15, 23, 42, 0.95) 10%, rgba(5, 150, 105, 0.4) 45%, rgba(15, 23, 42, 0) 70%);
+            border-radius: 53% 47% 43% 57% / 45% 42% 58% 55%;
+            animation: wash-diffusion 5s infinite alternate ease-in-out;
+        }
+
+        /* The Cyber Bleed: Neon cyan expanding and dissolving into the wash */
+        .ink-blob-2 {
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, rgba(56, 189, 248, 0.08) 50%, rgba(15, 23, 42, 0) 70%);
+            border-radius: 42% 58% 49% 51% / 60% 40% 60% 40%;
+            animation: cyber-dissolve 8s infinite linear;
+        }
+
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 700px;
+            padding: 0 20px;
+        }
+
+        .sys-status {
+            color: var(--cyan-glow);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(to right, var(--cyan-glow), var(--emerald-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            padding-left: 16px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* --- EXPERIENCE TIMELINE --- */
+        .experience {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            border-top: 1px solid #0f172a;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.7rem;
+            letter-spacing: 2px;
+            color: var(--cyan-glow);
+            margin-bottom: 48px;
+        }
+
+        .timeline {
+            position: relative;
+            border-left: 2px dashed rgba(34, 211, 238, 0.3);
+            margin-left: 140px;
+            padding-left: 32px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 48px;
+        }
+
+        .timeline-node {
+            position: absolute;
+            left: -41px;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--bg-color);
+            border: 2px solid var(--cyan-glow);
+            box-shadow: 0 0 8px var(--cyan-glow);
+        }
+
+        .timeline-date-desktop {
+            position: absolute;
+            left: -160px;
+            top: 4px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .timeline-date-mobile {
+            display: none;
+            color: var(--cyan-glow);
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .job-card {
+            background-color: rgba(15, 23, 42, 0.5);
+            border: 1px solid #1e293b;
+            padding: 24px;
+            border-radius: 8px;
+            transition: border 0.3s ease;
+        }
+
+        .job-card:hover {
+            border-color: rgba(34, 211, 238, 0.4);
+        }
+
+        .job-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 4px;
+        }
+
+        .job-card .company {
+            color: var(--emerald-glow);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .job-card ul {
+            list-style-type: square;
+            padding-left: 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .job-card li {
+            margin-bottom: 8px;
+        }
+
+        /* --- PROJECTS MATRIX --- */
+        .projects {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            border-top: 1px solid #0f172a;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .card {
+            background: linear-gradient(to bottom right, var(--bg-color), rgba(15, 23, 42, 0.4));
+            border-radius: 8px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .card.crypto {
+            border: 1px solid rgba(248, 113, 113, 0.2);
+        }
+
+        .card.crypto:hover {
+            box-shadow: 0 0 15px rgba(248, 113, 113, 0.1);
+        }
+
+        .card.hub {
+            border: 1px solid rgba(34, 211, 238, 0.2);
+        }
+
+        .card.hub:hover {
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.1);
+        }
+
+        .card-icon {
+            margin-bottom: 16px;
+        }
+
+        .card.crypto .card-icon {
+            color: var(--red-glow);
+        }
+
+        .card.hub .card-icon {
+            color: var(--cyan-glow);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .card.crypto .card-link {
+            color: var(--red-glow);
+        }
+
+        .card.hub .card-link {
+            color: var(--cyan-glow);
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid #0f172a;
+            padding: 40px 20px;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            font-size: 0.75rem;
+            color: #475569;
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--cyan-glow);
+        }
+
+        /* --- KEYFRAMES --- */
+
+        /* @keyframes pulse {
+            0% { transform: scale(0.9) rotate(0deg); border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; }
+            100% { transform: scale(1.15) rotate(15deg); border-radius: 40% 60% 30% 70% / 60% 50% 70% 40%; }
+        }
+        @keyframes ping-loop {
+            0% { transform: scale(0.8) rotate(0deg); opacity: 0.3; }
+            50% { opacity: 0.8; }
+            100% { transform: scale(1.4) rotate(-360deg); opacity: 0; }
+        } */
+
+
+
+        @keyframes wash-diffusion {
+            0% {
+                transform: scale(0.85) rotate(0deg);
+                border-radius: 53% 47% 43% 57% / 45% 42% 58% 55%;
+            }
+
+            50% {
+                border-radius: 40% 60% 35% 65% / 50% 60% 40% 50%;
+            }
+
+            100% {
+                transform: scale(1.1) rotate(25deg);
+                border-radius: 62% 38% 52% 48% / 48% 53% 47% 52%;
+            }
+        }
+
+        @keyframes cyber-dissolve {
+            0% {
+                transform: scale(0.9) rotate(0deg);
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.3) rotate(-360deg);
+                opacity: 0.1;
+            }
+        }
+
+
+        /* --- RESPONSIVE MEDIA QUERIES (CSS Blueprint) --- */
+        @media (max-width: 768px) {
+            nav.desktop-nav {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .timeline {
+                margin-left: 0;
+            }
+
+            .timeline-date-desktop {
+                display: none;
+            }
+
+            .timeline-date-mobile {
+                display: block;
+            }
+
+            .timeline-node {
+                left: -41px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Invisible SVG Matrix for the Ink Bleed (暈染) texture -->
+    <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1"
+        xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <filter id="ink-bleed-filter">
+                <!-- Creates a turbulent fluid distortion texture -->
+                <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="4" result="noise" />
+                <!-- Map the colors to the noise texture to distort the straight vector edges into a bleeding ink effect -->
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="55" xChannelSelector="R"
+                    yChannelSelector="G" />
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- 1. HEADER SECTION -->
+    <header>
+        <div class="header-container">
+            <div class="logo">JIM.CHAN</div>
+            <nav class="desktop-nav">
+                <a href="#home">// Home</a>
+                <a href="#experience">// Experience</a>
+                <a href="#projects">// Projects</a>
+                <a href="#contact">// Contact</a>
+            </nav>
+            <button class="menu-btn" id="menuToggle">
+                <i data-lucide="menu" id="menuIcon"></i>
+            </button>
+        </div>
+        <!-- Mobile Dropdown -->
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#home" onclick="toggleMenu()">&gt; Home</a>
+            <a href="#experience" onclick="toggleMenu()">&gt; Experience</a>
+            <a href="#projects" onclick="toggleMenu()">&gt; Projects</a>
+            <a href="#contact" onclick="toggleMenu()">&gt; Contact</a>
+        </div>
+    </header>
+
+    <!-- 2. MAIN HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="ink-bg-container">
+            <div class="ink-blob-1"></div>
+            <div class="ink-blob-2"></div>
+            <!-- NOTE: Swap these div blobs with a loopable <video src="ink_loop.webm" autoplay loop muted /> later if needed -->
+        </div>
+        <div class="hero-content">
+            <p class="sys-status">[ System Initialized ]</p>
+            <h1>Hi, I am <span>Jim Chan</span></h1>
+            <p>A Software Engineer fusing raw terminal performance with elegant, fluid digital experiences. Specialized
+                in building secure web applications and robust architectures.</p>
+        </div>
+    </section>
+
+    <!-- 3. JOB SECTION -->
+    <section id="experience" class="experience">
+        <h2 class="section-title">// Career_Log</h2>
+        <div class="timeline">
+
+            <!-- Job Card 1 -->
+            <div class="timeline-item">
+                <div class="timeline-node"></div>
+                <div class="timeline-date-desktop">2024 - Present</div>
+                <div class="job-card">
+                    <div class="timeline-date-mobile">2024 - Present</div>
+                    <h3>Senior Full Stack Engineer</h3>
+                    <div class="company">@ TechCorp Cybernetics</div>
+                    <ul>
+                        <li>Architected scalable high-traffic production application systems.</li>
+                        <li>Enhanced secure cryptographic data translation matrices.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Job Card 2 -->
+            <div class="timeline-item">
+                <div class="timeline-node"></div>
+                <div class="timeline-date-desktop">2022 - 2024</div>
+                <div class="job-card">
+                    <div class="timeline-date-mobile">2022 - 2024</div>
+                    <h3>Software Developer</h3>
+                    <div class="company">@ Quantum Nexus Studio</div>
+                    <ul>
+                        <li>Developed interactive canvas and graphics-heavy visual web pipelines.</li>
+                        <li>Optimized UI logic, lowering rendering overhead by 40%.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 4. WEB APPS GATEWAY -->
+    <section id="projects" class="projects">
+        <h2 class="section-title">// External_Subsystems</h2>
+        <div class="grid">
+
+            <div class="card crypto">
+                <div>
+                    <div class="card-icon"><i data-lucide="shield-alert" size="32"></i></div>
+                    <h3>Image Encryption Portal</h3>
+                    <p>An isolated sandboxed system handling browser-side pixel transformations, custom encryption
+                        matrices, and steganography toolsets.</p>
+                </div>
+                <a href="/crypto-portal" class="card-link">Initialize Handshake <i data-lucide="external-link"
+                        size="14"></i></a>
+            </div>
+
+            <div class="card hub">
+                <div>
+                    <div class="card-icon"><i data-lucide="layers" size="32"></i></div>
+                    <h3>The App Hub</h3>
+                    <p>Centralized matrix staging micro-utilities, dynamic automation features, and client experimental
+                        sandboxes.</p>
+                </div>
+                <a href="/app-hub" class="card-link">Access Modules <i data-lucide="external-link" size="14"></i></a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. FOOTER SECTION -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="copyright">&copy; 2026 YOUR_IDENTITY. ALL RIGHTS SECURED.</div>
+            <div class="footer-links">
+                <a href="https://linkedin.com/in/yourprofile" target="_blank">
+                    <i data-lucide="linkedin" size="16"></i> LinkedIn
+                </a>
+                <a href="/your-cv.pdf" target="_blank">
+                    <i data-lucide="file-text" size="16"></i> Download_CV
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lucide Icons Library Injection & Toggle script -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        // Init icons
+        lucide.createIcons();
+
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const menuIcon = document.getElementById('menuIcon');
+
+        function toggleMenu() {
+            mobileNav.classList.toggle('open');
+            const isOpen = mobileNav.classList.contains('open');
+
+            // Swap icon attributes cleanly
+            menuToggle.innerHTML = isOpen
+                ? '<i data-lucide="x"></i>'
+                : '<i data-lucide="menu"></i>';
+            lucide.createIcons();
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+    </script>
+</body>
+
+</html>
