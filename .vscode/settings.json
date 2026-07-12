@@ -3,8 +3,8 @@
   "editor.formatOnSave": true,
   "typescript.validate.enable": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll": true
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll": "explicit"
   },
   "path-intellisense.mappings": {
     "@components": "${workspaceRoot}/components",

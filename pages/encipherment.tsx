@@ -49,6 +49,10 @@ export default function CryptoPortal() {
 
         if (!currentData.preview && !currentData.password) return alert('Please enter a password');
 
+        if (!currentData.password || !currentData.preview) {
+            // Handle error or alert user to type a password
+            return;
+        }
 
         try {
             setIsProcessing(true);
