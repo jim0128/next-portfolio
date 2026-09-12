@@ -29,27 +29,28 @@ const SelfProject: NextPage = () => {
                     </a>
                 </div>
 
-                {/* App 2: The App Hub */}
+
+                {/* App 2: Badminton Hub */}
                 {/* ✨ Added 'max-w-xl w-full mx-auto' here as well to mirror the exact scale mechanics */}
-                {/* <div className="border border-[#38bdf8]/10 bg-[#141f32]/40 rounded-xl p-8 relative overflow-hidden group hover:border-[#38bdf8] hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.2)] transition-all duration-300 max-w-xl w-full mx-auto">
+                <div className="border border-[#38bdf8]/10 bg-[#141f32]/40 rounded-xl p-8 relative overflow-hidden group hover:border-[#38bdf8] hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.2)] transition-all duration-300 max-w-xl w-full mx-auto">
 
                     <div className="text-[#38bdf8] mb-4 p-2 bg-[#38bdf8]/10 rounded-lg w-fit">
                         <Layers size={24} className="animate-pulse" />
                     </div>
 
-                    <h3 className="text-xl font-bold mb-2 text-[#38bdf8]">The App Hub</h3>
+                    <h3 className="text-xl font-bold mb-2 text-[#38bdf8]">Badminton Hub</h3>
 
                     <p className="text-[#cbd5e1] text-sm line-clamp-3 leading-relaxed mb-6">
-                        Centralized matrix staging micro-utilities, dynamic automation features, and client experimental sandboxes.
+                        Centralized badminton court tracking subsystem, real-time LCSD data streams, and automated availability monitoring.
                     </p>
 
-                    <a href="/app-hub" className="text-[#38bdf8] text-xs flex items-center gap-1 hover:underline tracking-wider uppercase w-fit">
-                        ACCESS MODULES <ExternalLink size={14} />
+                    <a href="/badminton" className="text-[#38bdf8] text-xs flex items-center gap-1 hover:underline tracking-wider uppercase w-fit">
+                        ACCESS HUB <ExternalLink size={14} />
                     </a>
-                </div> */}
+                </div>
 
             </div>
-        </section>
+        </section >
     )
 }
 
